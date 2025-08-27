@@ -1,6 +1,4 @@
-# RN RSU Tracker
-
-A lightweight, offline-first RSU/stock-grant tracker built with **React Native + Expo**, featuring a clean design, dark/light theming, localized UI (English/Hindi), typeahead company picker, flexible vesting-plan builder, portfolio analytics, and a vesting calendar.
+A lightweight, RSU/stock-grant tracker built with **React Native + Expo**, featuring a clean design, dark/light theming, localized UI (English), typeahead company picker, flexible vesting-plan builder, portfolio analytics, and a vesting calendar.
 
 ---
 
