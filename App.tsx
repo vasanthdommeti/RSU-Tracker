@@ -27,9 +27,9 @@ interface TextWithDefaultProps extends Text {
 export default function App() {
 
   useFonts({
-    'Montserrat-Bold': require('../rn-rsu-tracker/assets/fonts/Montserrat-Bold.otf'),
-    'Montserrat-Medium': require('../rn-rsu-tracker/assets/fonts/Montserrat-Medium.otf'),
-    'Montserrat-Regular': require('../rn-rsu-tracker/assets/fonts/Montserrat-Regular.otf'),
+    'Montserrat-Bold': require('./assets/fonts/Montserrat-Bold.otf'),
+    'Montserrat-Medium': require('./assets/fonts/Montserrat-Medium.otf'),
+    'Montserrat-Regular': require('./assets/fonts/Montserrat-Regular.otf'),
   });
 
   return (
