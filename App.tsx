@@ -1,20 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import 'react-native-reanimated';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ThemeProvider } from './src/context/ThemeContext';
+import { LocalizationProvider } from './src/context/LocalizationProvider';
+import { GrantsProvider } from './src/context/GrantsContext';
+import RootNavigator from './src/app/navigation/RootNavigator';
+import Toast from 'react-native-toast-message';
+import { TextInput } from 'react-native';
+import { useFonts } from 'expo-font';
+
+//To stop font scaling
+interface TextWithDefaultProps extends Text {
+  defaultProps?: { allowFontScaling?: boolean };
+};
+
+((Text as unknown) as TextWithDefaultProps).defaultProps =
+  ((Text as unknown) as TextWithDefaultProps).defaultProps || {};
+((Text as unknown) as TextWithDefaultProps).defaultProps!.allowFontScaling = false;
+
+((TextInput as unknown) as TextWithDefaultProps).defaultProps =
+  ((TextInput as unknown) as TextWithDefaultProps).defaultProps || {};
+((TextInput as unknown) as TextWithDefaultProps).defaultProps!.allowFontScaling = false;
 
 export default function App() {
+
+  useFonts({
+    'Montserrat-Bold': require('../rn-rsu-tracker/assets/fonts/Montserrat-Bold.otf'),
+    'Montserrat-Medium': require('../rn-rsu-tracker/assets/fonts/Montserrat-Medium.otf'),
+    'Montserrat-Regular': require('../rn-rsu-tracker/assets/fonts/Montserrat-Regular.otf'),
+  });
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <LocalizationProvider>
+        <ThemeProvider>
+          <GrantsProvider>
+            <NavigationContainer>
+              <RootNavigator />
+            </NavigationContainer>
+            <Toast />
+          </GrantsProvider>
+        </ThemeProvider>
+      </LocalizationProvider>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
